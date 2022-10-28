@@ -10,7 +10,7 @@ const router = express.Router();
 
 
 
-//* joi
+
 const validationSchema = joi.object({
     name: joi.string().min(2).max(60).required(),
     email: joi.string().email().required(),
@@ -120,7 +120,7 @@ router.put("/:id", auth, async (req, res) => {
     }
 
     try {
-        //*temos que encriptar outra vez a pass, antes de actualizar
+        
         user.password = await bcrypt.hash(user.password, 10);
 
         const updateUser = await User.findByIdAndUpdate(req.params.id, user, {new: true});

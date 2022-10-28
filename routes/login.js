@@ -49,12 +49,10 @@ router.post("/", async (req, res) => {
     .header({"Authorization": "Bearer " + token})
     .send({"header": "Authorization Bearer", "token":token});
 
-    //return res.send(user);
+  
 });
 
 
 module.exports = router;
 
 
-/*vamos criar um login para o utlizador, precisamos do email e da password,
-para ver se bate certo com a informação guarda na base de dados no registo*/

@@ -14,10 +14,10 @@ const router = express.Router();
 
 //* joi
 const validationSchema = joi.object({
-    //user_id: joi.string().alphanum().min(24).max(24).required(),
+  
     items: joi.array().items(
         joi.object({
-            //item_id: joi.number().integer().min(1).required(),
+            
             item_id: joi.string().alphanum().min(24).max(24).required(),
             quantity: joi.number().integer().min(1).required()
         })
@@ -33,7 +33,7 @@ const validationSchema = joi.object({
 
 router.get("/", async (req, res) => {
     const orders = await Order.find().select("user_id orderDate").sort({
-        orderDate: -1//* ordenar de forma descendente
+        orderDate: -1
     });
     res.send(orders);
     
@@ -85,10 +85,10 @@ router.post("/", auth, async (req, res) => {
         return res.status(400).send({"message": error.details[0].message});
     }
 
-    //* para guardar o id do user que está a fazer a encomenda
+    
     order.user_id = req.userPayload._id;
-    //!
-    //order.delivery = await User.findById(request.userPayload._id).select("name street_address").lean();
+    
+    
 
 
     
@@ -135,7 +135,7 @@ router.put("/:id", auth, async (req, res) => {
         return res.status(403).send({
             "message": "Order already paid and cannot be changed"
         });
-        //return res.status(404).send({"message":"Invalid ID"});    
+         
     }
 
 

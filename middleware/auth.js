@@ -8,7 +8,7 @@ function auth(req, res, next) {
 
     const token = req.header("Authorization").replace("Bearer", "").trim();
 
-    //res.send(token);
+
 
     try {
 

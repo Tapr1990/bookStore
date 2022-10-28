@@ -11,7 +11,7 @@ const router = express.Router();
 
 
 
-//* joi
+
 const validationSchema = joi.object({
     title: joi.string().min(1).max(255).required(),
     author: joi.string().min(2).max(120).required(),
